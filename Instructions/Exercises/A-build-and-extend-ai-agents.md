@@ -73,6 +73,17 @@ buttons below to auto-expand a set of tasks that match the time you have.
   <button type="button" class="lab-btn" data-tier="3">Everything · ~1h 50m</button>
 </div>
 
+<div class="lab-length-fallback" markdown="1">
+
+**Choosing your lab length** (the buttons above need JavaScript, which isn't run in
+GitHub's file preview) — expand the optional tasks that fit the time you have:
+
+- **Core only (~35 min):** do Tasks 1–2 only; leave the optional tasks collapsed.
+- **Core + recommended (~1h 20m):** also expand **Task 3** and **Task 4**.
+- **Everything (~1h 50m):** expand **Task 3**, **Task 4**, and **Task 5**.
+
+</div>
+
 <style>
 .lab-length-picker { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin:1rem 0; }
 .lab-length-label { font-weight:600; }
@@ -98,6 +109,8 @@ details.opt-task.is-included > summary { font-weight:600; }
   document.querySelectorAll('.lab-btn').forEach(function (b) {
     b.addEventListener('click', function () { applyTier(Number(b.dataset.tier)); });
   });
+  var fallback = document.querySelector('.lab-length-fallback');
+  if (fallback) { fallback.hidden = true; }
   applyTier(1);
 })();
 </script>
