@@ -26,6 +26,19 @@ An agent becomes genuinely useful when it can *do* things — look up live infor
 call your business logic, and act on a user's behalf. In this exercise you'll build a
 grounded agent and then give it capabilities using **tools**.
 
+<details markdown="1" class="concept">
+<summary>What is an agent?</summary>
+<div class="concept-body" markdown="1">
+
+An AI agent is a software service that uses generative AI to understand a request, decide
+what to do, and take action on a user's behalf. What makes an agent genuinely useful isn't
+the model alone — it's the **knowledge** you ground it in and the **tools** you give it.
+
+[Learn more →](https://review.learn.microsoft.com/en-us//training/modules/build-extend-ai-agents/1-introduction?branch=pr-en-us-55509)
+
+</div>
+</details>
+
 **Your scenario:** you work at **Adventure Works**, an outdoor-gear retailer that
 also runs guided trips. Across this lab you'll build the assistant that helps customers
 **plan a trip and choose the right gear for it**, adding one capability per task: first
@@ -98,6 +111,17 @@ GitHub's file preview) — expand the optional tasks that fit the time you have:
 .lab-btn.is-active { background:#0969da; color:#fff; border-color:#0969da; }
 details.opt-task.is-included { border-left:3px solid #0969da; padding-left:.6rem; }
 details.opt-task.is-included > summary { font-weight:600; }
+/* "New to agents?" just-in-time concept blocks */
+details.concept { margin:.6rem 0 1rem; }
+details.concept > summary { display:inline-block; cursor:pointer; list-style:none;
+  font-size:.85em; font-weight:600; color:#0969da; background:#0969da12;
+  border:1px solid #0969da33; border-radius:999px; padding:.2em .7em; }
+details.concept > summary::-webkit-details-marker { display:none; }
+details.concept > summary::before { content:"\1F4AC  Ask Anton: "; font-weight:700; }
+details.concept > summary:hover { background:#0969da; color:#fff; border-color:#0969da; }
+details.concept[open] > summary { border-bottom-left-radius:0; border-bottom-right-radius:0; }
+details.concept .concept-body { border:1px solid #0969da33; border-top:none;
+  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#0969da08; font-size:.95em; }
 </style>
 
 <script>
@@ -176,9 +200,22 @@ the portal; Task 2 extends an agent with a tool in code.
 Grounding gives your agent trusted source material so it answers accurately instead of
 guessing.
 
+<details markdown="1" class="concept">
+<summary>What is grounding?</summary>
+<div class="concept-body" markdown="1">
+
+The single most important capability for the Adventure Works agent is **grounding**.
+Grounding attaches trusted source material — such as the store policy document — so the
+agent answers *from that data* instead of inventing a response.
+
+[Learn more →](https://review.learn.microsoft.com/en-us/training/modules/build-extend-ai-agents/2-understand-agents-foundry?branch=pr-en-us-55509)
+
+</div>
+</details>
+
 1. In the agent playground, set the **Instructions** to:
 
-    ```prompt
+    ```
     You are the Adventure Works assistant.
     You help customers plan guided trips and choose the right gear, and answer questions about products, orders, returns, rentals, and guided trips.
 
@@ -230,6 +267,19 @@ Works engineering team** that builds and runs it on Azure. In this task you'll
 connect an agent to the **Microsoft Learn Docs** remote MCP server, giving that team an
 assistant that can pull trusted, up-to-date Azure documentation on demand as they build the
 trip-and-gear platform.
+
+<details markdown="1" class="concept">
+<summary>What is MCP?</summary>
+<div class="concept-body" markdown="1">
+
+The **Model Context Protocol (MCP)** solves this by letting an agent discover tools at
+runtime. With MCP, tools live on a **server** that acts as a live catalog. Your agent
+(through a **client**) asks the server what tools are available and calls them on demand.
+
+[Learn more →](https://review.learn.microsoft.com/en-us/training/modules/build-extend-ai-agents/5-connect-agents-to-mcp?branch=pr-en-us-55509)
+
+</div>
+</details>
 
 ### Get the starter code
 
