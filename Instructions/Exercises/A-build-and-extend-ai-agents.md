@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Build and extend AI agents'
-    description: 'Build the Contoso Adventure Works assistant: ground it in store policy, then extend it with tools using remote MCP servers, custom functions, and a client app.'
+    description: 'Build the Trailhead Adventure Works assistant: ground it in store policy, then extend it with tools using remote MCP servers, custom functions, and a client app.'
     level: 300
     concepts: 'agent creation and grounding, tools, Model Context Protocol (MCP)'
     duration: 35
@@ -13,9 +13,9 @@ lab:
 PILOT NOTE (remove before publishing):
 This is a pilot of the new lab template (Core + Optional tasks) applied to
 "Lab A" = a consolidation of the current exercises 01, 02, and 03.
-Starter code lives in Labfiles/A-build-and-extend-ai-agents/ (duplicated from the source
-labs so it can evolve independently), organized as: portal-agent/ (Task 3),
-custom-functions/ (Task 4), and mcp/ (Tasks 2 and 5).
+Starter code lives in a single folder — Labfiles/A-build-and-extend-ai-agents/Python/ —
+shared by every task (one virtual environment, one .env). The completed reference code is
+in Labfiles/A-build-and-extend-ai-agents/Solution/Python/.
 Remaining follow-up tracked in the design spec: author a shared "Getting started" setup
 page and link it instead of repeating setup here.
 -->
@@ -26,7 +26,7 @@ An agent becomes genuinely useful when it can *do* things — look up live infor
 call your business logic, and act on a user's behalf. In this exercise you'll build a
 grounded agent and then give it capabilities using **tools**.
 
-**Your scenario:** you work at **Contoso Adventure Works**, an outdoor-gear retailer that
+**Your scenario:** you work at **Trailhead Adventure Works**, an outdoor-gear retailer that
 also runs guided trips. Across this lab you'll build the staff assistant that powers the
 business, adding one capability per task: first grounding it in the store's own policies,
 then connecting it to live documentation, letting it analyze sales data, take trip
@@ -53,12 +53,14 @@ The **Optional** tasks let you additionally:
 - Call your agent from a **client application**.
 - Give an agent **custom function tools** that run your own Python logic.
 - Build and connect your **own MCP server**.
+- Compare two ways to build the same agent: the **Foundry SDK + Responses API** (which you
+  write) and the **Microsoft Agent Framework** (a provided, ready-to-run variant).
 
 ## Lab at a glance
 
 Complete the **Core** tasks first (about **35 minutes**) — they're self-contained and end
 with a working, tool-using agent. Then expand any **Optional** tasks that interest you.
-The full lab, including all optional tasks, takes about **1 hour 50 minutes**. Use the
+The full lab, including all optional tasks, takes about **1 hour 55 minutes**. Use the
 buttons below to auto-expand a set of tasks that match the time you have.
 
 | Section | Task | Difficulty | Time |
@@ -67,7 +69,7 @@ buttons below to auto-expand a set of tasks that match the time you have.
 | **Core** | Task 2 – Connect the agent to a remote MCP server in code | ★★☆ | ~20 min |
 | *Optional* | Task 3 – Call your agent from a client app | ★★☆ | ~20 min |
 | *Optional* | Task 4 – Add custom function tools | ★★☆ | ~25 min |
-| *Optional* | Task 5 – Build your own MCP server + client | ★★★ | ~30 min |
+| *Optional* | Task 5 – Capstone: your own MCP server + combine every tool | ★★★ | ~35 min |
 
 <!-- Lab-length picker. Works on the rendered GitHub Pages site; on GitHub.com's raw
      markdown view the buttons are inert, but every task can still be expanded manually.
@@ -76,7 +78,7 @@ buttons below to auto-expand a set of tasks that match the time you have.
   <span class="lab-length-label">Choose your lab length:</span>
   <button type="button" class="lab-btn is-active" data-tier="1">Core only · ~35 min</button>
   <button type="button" class="lab-btn" data-tier="2">Core + recommended · ~1h 20m</button>
-  <button type="button" class="lab-btn" data-tier="3">Everything · ~1h 50m</button>
+  <button type="button" class="lab-btn" data-tier="3">Everything · ~1h 55m</button>
 </div>
 
 <div class="lab-length-fallback" markdown="1">
@@ -86,7 +88,7 @@ GitHub's file preview) — expand the optional tasks that fit the time you have:
 
 - **Core only (~35 min):** do Tasks 1–2 only; leave the optional tasks collapsed.
 - **Core + recommended (~1h 20m):** also expand **Task 3** and **Task 4**.
-- **Everything (~1h 50m):** expand **Task 3**, **Task 4**, and **Task 5**.
+- **Everything (~1h 55m):** expand **Task 3**, **Task 4**, and **Task 5** (Task 5 builds on Task 4).
 
 </div>
 
@@ -179,7 +181,7 @@ guessing.
 1. In the agent playground, set the **Instructions** to:
 
     ```prompt
-    You are the Contoso Adventure Works store assistant.
+    You are the Trailhead Adventure Works store assistant.
     You help customers and store staff with questions about products, orders, returns, rentals, and guided trips.
 
     Guidelines:
@@ -191,7 +193,7 @@ guessing.
 1. Download the sample store policy document. Open a new browser tab and navigate to:
 
     ```
-    https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-agents/main/Labfiles/A-build-and-extend-ai-agents/portal-agent/Store_Policy.txt
+    https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-agents/main/Labfiles/A-build-and-extend-ai-agents/Python/Store_Policy.txt
     ```
 
     Save the file to your local machine.
@@ -224,7 +226,7 @@ guessing.
 ## Task 2 — Extend an agent with a remote MCP server (code)
 
 The **Model Context Protocol (MCP)** lets an agent discover and call tools hosted by a
-server. Behind the scenes, the Contoso Adventure Works platform team is rebuilding the
+server. Behind the scenes, the Trailhead Adventure Works platform team is rebuilding the
 online store on Azure — so in this task you'll connect an agent to the **Microsoft Learn
 Docs** remote MCP server, giving the team an assistant that can pull trusted, up-to-date
 Azure documentation on demand.
@@ -237,9 +239,9 @@ Azure documentation on demand.
     https://github.com/MicrosoftLearning/mslearn-ai-agents.git
     ```
 
-1. Open the cloned repo, then **File > Open Folder** and select `mslearn-ai-agents/Labfiles/A-build-and-extend-ai-agents/mcp`.
+1. Open the cloned repo, then **File > Open Folder** and select `mslearn-ai-agents/Labfiles/A-build-and-extend-ai-agents/Python`. This single folder holds the starter code for every task in this lab.
 
-1. Expand the **Python** folder, right-click **requirements.txt**, and choose **Open in Integrated Terminal**. Then create a virtual environment and install packages:
+1. Right-click **requirements.txt** and choose **Open in Integrated Terminal**. Then create a virtual environment and install packages:
 
     ```
     python -m venv labenv
@@ -253,7 +255,7 @@ Azure documentation on demand.
 
 ### Connect the agent to the MCP server
 
-Open **agent.py** and add code at each commented placeholder.
+Open **remote_mcp_agent.py** and add code at each commented placeholder.
 
 > **Tip**: As you add code, keep the indentation aligned with the comments.
 
@@ -297,7 +299,7 @@ Open **agent.py** and add code at each commented placeholder.
         agent_name="platform-docs-agent",
         definition=PromptAgentDefinition(
             model=model_deployment,
-            instructions="You are a platform engineering assistant for Contoso Adventure Works. Use the available MCP tools to look up trusted Azure documentation and help the team build and operate the online store.",
+            instructions="You are a platform engineering assistant for Trailhead Adventure Works. Use the available MCP tools to look up trusted Azure documentation and help the team build and operate the online store.",
             tools=[mcp_tool],
         ),
     )
@@ -373,7 +375,7 @@ Open **agent.py** and add code at each commented placeholder.
     ```
 
     ```
-    python agent.py
+    python remote_mcp_agent.py
     ```
 
 1. Watch the agent create itself, call the MCP tool (approved automatically by your loop), and answer using live documentation. You should see output similar to:
@@ -399,14 +401,38 @@ When you're finished, enter `deactivate` to exit the virtual environment.
 
 # Optional
 
-These tasks are independent — expand any that interest you, in any order. Each begins with
-a **Try it first** prompt; expand **Show a solution** when you want the full walkthrough.
+Tasks 3 and 4 are independent — expand either that interests you, in any order. **Task 5 is
+the capstone**: it brings the lab together into one assistant and builds on **Task 4**, so do
+Task 4 first. Each task begins with a **Try it first** prompt; expand **Show a solution** when
+you want the full walkthrough.
 
 > **One assistant, growing capabilities**: Tasks 3–5 all run behind the same provided web
-> chat window (`contoso_ui.py`) — the **Contoso Adventure Works Assistant**. You focus only
+> chat window (`trailhead_ui.py`) — the **Trailhead Adventure Works Assistant**. You focus only
 > on the agent code; each task gives the same assistant a new capability (analyzing sales
-> data, planning trips, and checking warehouse stock). You don't edit `contoso_ui.py`; you
+> data, planning trips, and checking warehouse stock). You don't edit `trailhead_ui.py`; you
 > just write a `respond()` function and hand it to `run_chat_app()`.
+
+## Two ways to build the same agent
+
+There's more than one way to write an agent against Microsoft Foundry, and this lab shows you
+**two**:
+
+- **The Foundry SDK with the Responses API** — the approach you'll *write* throughout this lab.
+  You create the agent with `azure-ai-projects`, describe each tool with an explicit JSON
+  schema, and drive the **tool-calling loop yourself**: read the model's response, run the
+  tool it asked for, and send the result back. This is deliberately hands-on so you can *see*
+  the mechanics every agent runtime performs under the hood.
+- **The Microsoft Agent Framework (MAF)** — a higher-level framework that hides that plumbing.
+  You decorate a plain Python function with `@tool` (the schema is generated for you) and call
+  `await agent.run(...)`, which runs the entire tool-calling loop automatically.
+
+Neither is "more correct" — they're different levels of abstraction. Seeing the raw mechanics
+first is what makes the framework's shortcuts meaningful later. To make the contrast concrete,
+**Tasks 4 and 5 each ship a ready-to-run MAF edition** of the same assistant
+(`functions_agent_maf.py` and `client_maf.py`) that you can read and run alongside your own
+version. The Microsoft Agent Framework is covered in depth in **Lab 07 (Agent Framework)** and
+**Lab 08 (multi-agent orchestration)**.
+
 
 <details markdown="1" class="opt-task" data-tier="2">
 <summary><strong>Task 3 — Call your agent from a client app</strong> &middot; ★★☆ &middot; ~20 min</summary>
@@ -417,7 +443,7 @@ the playground — including charts the agent produces (from code interpreter), 
 
 **Concept reinforced**: consuming an agent programmatically with the Foundry SDK — loading
 an existing agent by name and driving it with the Responses API. A provided UI shell
-(`contoso_ui.py`) turns your agent into a browser chat app, so you focus on the agent code,
+(`trailhead_ui.py`) turns your agent into a browser chat app, so you focus on the agent code,
 not the interface.
 
 **Set up:**
@@ -426,20 +452,15 @@ not the interface.
     a data file so there's something to analyze. Download and attach:
 
     ```
-    https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-agents/main/Labfiles/A-build-and-extend-ai-agents/portal-agent/weekly_sales.csv
+    https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-agents/main/Labfiles/A-build-and-extend-ai-agents/Python/weekly_sales.csv
     ```
 
     Save the agent.
 
-1. In VS Code, open the `Labfiles/A-build-and-extend-ai-agents/portal-agent/Python` folder.
-    Create a virtual environment, install requirements, then open **.env** and set
-    `PROJECT_ENDPOINT` and `AGENT_NAME` (`trailhead-agent`):
-
-    ```
-    python -m venv labenv
-    .\labenv\Scripts\Activate.ps1
-    pip install -r requirements.txt
-    ```
+1. Use the same `Labfiles/A-build-and-extend-ai-agents/Python` folder and virtual environment
+    you set up in Task 2 (if you closed the terminal, reactivate with
+    `.\labenv\Scripts\Activate.ps1`). Then open **.env** and add `AGENT_NAME=trailhead-agent`
+    alongside the `PROJECT_ENDPOINT` you already set. Save the file.
 
 > **Try it first**: The `agent_with_functions.py` file already contains a complete client
 > that launches a web chat window. Before running it, predict: which SDK call loads your
@@ -475,7 +496,7 @@ The provided `agent_with_functions.py` already implements the client and hands i
 4. **Launch the app**: the file ends by starting the browser chat window:
 
     ```python
-    run_chat_app(respond, title="Contoso Adventure Works Assistant")
+    run_chat_app(respond, title="Trailhead Adventure Works Assistant")
     ```
 
 Sign in and run it:
@@ -512,10 +533,10 @@ call and with *what* arguments; your code executes it and returns the result.
 
 **Set up:**
 
-1. Open the `Labfiles/A-build-and-extend-ai-agents/custom-functions/Python` folder, create
-    a virtual environment, install requirements, and set `PROJECT_ENDPOINT` and
-    `MODEL_DEPLOYMENT_NAME` in **.env**. Review **functions.py**, which contains the trip
-    planner's helper functions.
+1. Use the same `Labfiles/A-build-and-extend-ai-agents/Python` folder and virtual environment
+    you set up in Task 2 (reactivate with `.\labenv\Scripts\Activate.ps1` if needed); your
+    `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in **.env** are already set. Review
+    **functions.py**, which contains the trip planner's helper functions.
 
 > **Try it first**: Look at `next_available_trip(region)` in **functions.py**. How would
 > you describe its single `region` parameter to the model so it knows when and how to
@@ -524,7 +545,7 @@ call and with *what* arguments; your code executes it and returns the result.
 <details markdown="1">
 <summary>Show a solution</summary>
 
-Work through the comments in **agent.py**. Add references and connect to the project (the
+Work through the comments in **functions_agent.py**. Add references and connect to the project (the
 same pattern as Task 2). The file is structured so your agent setup runs once, then a
 `respond()` function handles each chat message and hands the reply to `run_chat_app()`:
 
@@ -561,7 +582,7 @@ same pattern as Task 2). The file is structured so your agent setup runs once, t
         agent_name="trip-planner-agent",
         definition=PromptAgentDefinition(
             model=model_deployment,
-            instructions="""You are a trip planning assistant for Contoso Adventure Works that helps
+            instructions="""You are a trip planning assistant for Trailhead Adventure Works that helps
                 customers find guided trips and calculate gear rental costs.
                 Use the available tools to assist users with their inquiries.""",
             tools=[trip_tool, cost_tool, report_tool],
@@ -607,7 +628,7 @@ same pattern as Task 2). The file is structured so your agent setup runs once, t
     return AgentReply(text=response.output_text)
     ```
 
-Run `python agent.py`. Your browser opens the chat window — try a prompt that needs **two**
+Run `python functions_agent.py`. Your browser opens the chat window — try a prompt that needs **two**
 tools at once:
 
 ```
@@ -628,28 +649,88 @@ deleted automatically on exit).
 
 **Stretch**: add a fourth function tool of your own and update the instructions to mention it.
 
+<details markdown="1">
+<summary>Compare: the same agent with the Microsoft Agent Framework</summary>
+
+You just wrote two schemas per tool and a dispatch loop that matches each `function_call` to a
+Python function. The **Microsoft Agent Framework** removes both. Open **functions_agent_maf.py**
+(provided complete) and run it with `python functions_agent_maf.py` — it produces the *same*
+trip-planner assistant.
+
+The difference is the tool definition and the loop. Instead of a hand-written `FunctionTool`
+schema, you decorate the function with `@tool` and describe each parameter inline:
+
+```python
+from agent_framework import tool, Agent
+from agent_framework.foundry import FoundryChatClient
+from azure.identity import AzureCliCredential
+from pydantic import Field
+from typing import Annotated
+
+@tool(approval_mode="never_require")
+def next_available_trip(
+    region: Annotated[str, Field(description="Region to find the next guided trip in (e.g. 'pacific_northwest', 'rockies', 'patagonia')")],
+) -> str:
+    """Get the next available guided trip in a given region."""
+    return functions.next_available_trip(region)
+```
+
+Then you create the agent with the decorated functions and let `agent.run()` handle the whole
+tool-calling loop — no reading `response.output`, no matching names, no sending outputs back:
+
+```python
+agent = Agent(
+    client=FoundryChatClient(
+        project_endpoint=os.getenv("PROJECT_ENDPOINT"),
+        model=os.getenv("MODEL_DEPLOYMENT_NAME"),
+        credential=AzureCliCredential(),
+    ),
+    name="trip-planner-agent",
+    instructions="You are a trip planning assistant for Trailhead Adventure Works...",
+    tools=[next_available_trip, calculate_rental_cost, generate_booking_report],
+)
+
+# agent.run() decides which tools to call, runs them, and returns the final answer
+result = await agent.run(user_message, session=session)
+```
+
+Same result, far less code — because the framework does the plumbing you wrote by hand above.
+Writing it yourself first is what makes it clear *what* `agent.run()` is doing for you.
+
+</details>
+
 </details>
 
 <details markdown="1" class="opt-task" data-tier="3">
-<summary><strong>Task 5 — Build your own MCP server</strong> &middot; ★★★ &middot; ~30 min</summary>
+<summary><strong>Task 5 — Capstone: build your own MCP server and combine everything</strong> &middot; ★★★ &middot; ~35 min</summary>
 
-**Goal**: Instead of connecting to someone else's MCP server, host your **own** tools and
-connect an agent to them. Here you'll give Contoso Adventure Works a warehouse assistant
-that reads live stock and sales figures.
+**Goal**: Host your **own** tools on an MCP server, then bring the lab together into a single
+**Trailhead Adventure Works Assistant** — one agent that both **plans trips and prices gear**
+(the function tools from Task 4) *and* **checks live warehouse stock and sales** (the tools
+you host here).
 
 **Concept reinforced**: the MCP server/client split — a server *registers* tools; a client
-*discovers and calls* them on the agent's behalf.
+*discovers and calls* them — plus how one agent can hold **more than one kind of tool** at
+once. In `respond()` you *route* each call to the right place: local Python functions run
+in-process, MCP tools run over the server session.
+
+> **Prerequisite**: This capstone builds directly on **Task 4** — complete it first. The
+> trip-planner tools you wrote there (`next_available_trip`, `calculate_rental_cost`,
+> `generate_booking_report`) are provided ready-made in `client.py` so you can focus on the
+> new work: hosting your MCP server and *combining* both tool sets on one agent.
 
 **Set up:**
 
-1. Open the `Labfiles/A-build-and-extend-ai-agents/mcp/Python` folder (you set up its
-    virtual environment and **.env** in Task 2). You'll edit **server.py** and **client.py**.
+1. Use the same `Labfiles/A-build-and-extend-ai-agents/Python` folder and virtual environment
+    you set up in Task 2 (reactivate with `.\labenv\Scripts\Activate.ps1` if needed; your
+    **.env** is already configured). You'll edit **server.py** and **client.py**.
 
 > **Try it first**: Wire up **server.py** and **client.py** using the comments in each file.
 > As you go, consider: why must diagnostic output go to `stderr` (or be suppressed) rather
 > than `stdout`? *(Hint: MCP speaks JSON-RPC over stdio, so anything printed to stdout is
 > parsed as protocol messages — a stray banner corrupts the stream. That's why the server
-> starts with `show_banner=False`.)*
+> starts with `show_banner=False`.)* And: once the agent has **both** tool sets, how does
+> your code know whether a given `function_call` should run a local function or an MCP tool?
 
 <details markdown="1">
 <summary>Show a solution</summary>
@@ -675,13 +756,23 @@ def get_weekly_sales() -> dict:
 mcp.run(show_banner=False)
 ```
 
-**In `client.py`** — connect to the server, discover its tools, and register them with an
-agent. Because the chat UI runs on an async event loop, the connection code lives in an
-async `setup()` that runs once on the first message, and each message is handled by an async
-`respond()`:
+**In `client.py`** — connect to the server, discover its tools, register them **alongside**
+the trip-planner tools on one agent, then route each call in `respond()`. Because the chat UI
+runs on an async event loop, the connection code lives in an async `setup()` that runs once on
+the first message.
 
-1. Inside `setup()`, start the server over stdio and open a session, then list the available
-    tools:
+1. Add the MCP references at the top of the file:
+
+    ```python
+    from mcp import ClientSession, StdioServerParameters
+    from mcp.client.stdio import stdio_client
+    ```
+
+    The `trip_planner_tools` list and the `local_functions` dispatch dict (the Task 4 tools)
+    are already provided near the top of the file — you don't need to rewrite them.
+
+2. Inside `setup()`, start the server over stdio and open a session, then list the available
+    tools and wrap each as a callable:
 
     ```python
     stdio_transport = await exit_stack.enter_async_context(stdio_client(server_params))
@@ -689,11 +780,7 @@ async `setup()` that runs once on the first message, and each message is handled
     session = await exit_stack.enter_async_context(ClientSession(stdio, write))
     await session.initialize()
     tools = (await session.list_tools()).tools
-    ```
 
-2. Wrap each MCP tool as a callable and build `FunctionTool` definitions the agent can use:
-
-    ```python
     def make_tool_func(tool_name):
         async def tool_func(**kwargs):
             return await session.call_tool(tool_name, kwargs)
@@ -713,33 +800,48 @@ async `setup()` that runs once on the first message, and each message is handled
     ]
     ```
 
-3. Create the agent with those tools (in `setup()`), then in `respond()` run the tool-calling
-    loop (same pattern as Task 4) — but invoke the wrapped **async** MCP function for each
-    `function_call`, and return the answer to the chat window:
+3. Create the agent with **both** tool sets — the trip planner *and* the warehouse tools:
 
     ```python
     agent = project_client.agents.create_version(
-        agent_name="inventory-agent",
+        agent_name="trailhead-assistant",
         definition=PromptAgentDefinition(
             model=model_deployment,
             instructions="""
-            You are an inventory assistant. Here are some general guidelines:
+            You are the Trailhead Adventure Works assistant. You help customers plan guided
+            trips and price gear rentals, and you help warehouse staff check live stock and sales.
+
+            Trip planning and rentals:
+            - Use the trip and rental tools to find guided trips, price gear, and produce booking reports.
+
+            Warehouse inventory:
             - Recommend restock if item inventory < 10 and weekly sales > 15
             - Recommend clearance if item inventory > 20 and weekly sales < 5
             """,
-            tools=mcp_function_tools,
+            tools=[*trip_planner_tools, *mcp_function_tools],
         ),
     )
+    ```
 
+4. In `respond()`, route each `function_call` to the right executor — local functions run
+    directly (they return a string); MCP tools are awaited over the session:
+
+    ```python
     for item in response.output:
         if item.type == "function_call":
             kwargs = json.loads(item.arguments)
-            output = await functions_dict[item.name](**kwargs)
+
+            if item.name in local_functions:
+                output_text = local_functions[item.name](**kwargs)          # Task 4 function
+            else:
+                result = await functions_dict[item.name](**kwargs)          # your MCP tool
+                output_text = result.content[0].text
+
             input_list.append(
                 FunctionCallOutput(
                     type="function_call_output",
                     call_id=item.call_id,
-                    output=output.content[0].text,
+                    output=output_text,
                 )
             )
 
@@ -748,21 +850,60 @@ async `setup()` that runs once on the first message, and each message is handled
     ```
 
 Run `python client.py`. Your browser opens the chat window — the server is launched for you
-over stdio on the first message. Try:
+over stdio on the first message. Now try a prompt that exercises **both** halves of the
+assistant in one conversation:
 
 ```
-Show me the current inventory levels for all products.
+Plan me a trip: find the next available trip in Patagonia and price 5 days of premium gear at priority service.
+```
+```
+Now check the warehouse — are there any products we should restock?
 ```
 
-The agent calls your custom tools and answers from the returned data. Because the
-conversation is stateful, follow-ups like *"Are there any products that should be
-restocked?"* work too. Close the browser tab and press **Ctrl+C** in the terminal to stop
-the app.
+The first prompt calls your Task 4 trip-planner functions; the second calls your MCP
+inventory tools — all on the **same** agent, in the **same** chat. Close the browser tab and
+press **Ctrl+C** in the terminal to stop the app.
 
 </details>
 
-**Stretch**: add a third tool (for example, `get_reorder_threshold`) and watch the agent
-discover it without any other code changes.
+**Stretch**: add a third MCP tool (for example, `get_reorder_threshold`) and watch the agent
+discover it without any other client changes — the routing already handles any tool it
+doesn't recognize as a local function.
+
+<details markdown="1">
+<summary>Compare: the same capstone with the Microsoft Agent Framework</summary>
+
+In `client.py` you hand-wired the MCP client (`ClientSession`, `stdio_client`), wrapped each
+discovered tool, built `FunctionTool` schemas, and then *routed* every `function_call` yourself
+— local function or MCP tool. The **Microsoft Agent Framework** collapses all of that. Open
+**client_maf.py** (provided complete) and run it with `python client_maf.py` — same capstone,
+same two-tool-sets-on-one-agent behavior.
+
+Your `server.py` is unchanged — you still author the MCP server. What disappears is the client
+wiring and the routing loop. An `MCPStdioTool` launches the server and exposes its tools, and
+you hand it to `agent.run()` alongside the agent's own `@tool` functions:
+
+```python
+from agent_framework import tool, Agent, MCPStdioTool
+
+agent = Agent(
+    client=FoundryChatClient(...),
+    name="trailhead-assistant",
+    instructions="You are the Trailhead Adventure Works assistant...",
+    tools=[next_available_trip, calculate_rental_cost, generate_booking_report],
+)
+
+async with MCPStdioTool(name="Inventory", command="python", args=["server.py"]) as mcp_tool:
+    # One call handles either tool set — no manual "local vs MCP" routing
+    result = await agent.run(user_message, tools=mcp_tool, session=session)
+```
+
+Notice there's no `if item.name in local_functions ... else ...` branch: `agent.run()` invokes
+whichever tool the model picks, whether it's one of your Python functions or a tool hosted on
+your MCP server. Having built the routing by hand first, you can see exactly which step the
+framework is taking over.
+
+</details>
 
 </details>
 
@@ -774,7 +915,8 @@ In this exercise you:
 - **Extended an agent with a tool** by connecting it to a remote MCP server and handling
   tool-approval requests in code.
 - (Optionally) consumed an agent from a **client app**, added **custom function tools**,
-  and built your **own MCP server**.
+  and built your **own MCP server** — then combined the function tools and your MCP tools
+  into a single **capstone assistant** that routes each call to the right place.
 
 Together these show the two big levers for making agents useful: giving them the right
 **knowledge** (grounding) and the right **capabilities** (tools).
