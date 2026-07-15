@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Build and extend AI agents'
-    description: 'Build the Contoso Adventure Works assistant: ground it in store policy, then extend it with tools using remote MCP servers, custom functions, and a client app.'
+    description: 'Build the Adventure Works assistant: ground it in store policy, then extend it with tools using remote MCP servers, custom functions, and a client app.'
     level: 300
     concepts: 'agent creation and grounding, tools, Model Context Protocol (MCP)'
     duration: 35
@@ -26,11 +26,11 @@ An agent becomes genuinely useful when it can *do* things — look up live infor
 call your business logic, and act on a user's behalf. In this exercise you'll build a
 grounded agent and then give it capabilities using **tools**.
 
-**Your scenario:** you work at **Contoso Adventure Works**, an outdoor-gear retailer that
-also runs guided trips. Across this lab you'll build the staff assistant that powers the
-business, adding one capability per task: first grounding it in the store's own policies,
-then connecting it to live documentation, letting it analyze sales data, take trip
-bookings, and check warehouse stock.
+**Your scenario:** you work at **Adventure Works**, an outdoor-gear retailer that
+also runs guided trips. Across this lab you'll build the assistant that helps customers
+**plan a trip and choose the right gear for it**, adding one capability per task: first
+grounding it in the store's own policies, then connecting it to live documentation, letting
+it analyze sales data, take trip bookings, and check warehouse stock.
 
 You'll start with the **Core** tasks that get you to a working, tool-using agent as
 quickly as possible. From there, a set of **Optional** tasks lets you go deeper into the
@@ -160,7 +160,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
 1. Select **Create** and wait for your project to be created. When prompted, continue through the welcome dialog and select **Create agent**.
 
-1. Set the **Agent name** to `trailhead-agent` and create the agent. The playground opens with a deployed model already selected for you.
+1. Set the **Agent name** to `adventure-works-agent` and create the agent. The playground opens with a deployed model already selected for you.
 
 Keep this browser tab open — you'll use it in Task 1.
 
@@ -179,12 +179,13 @@ guessing.
 1. In the agent playground, set the **Instructions** to:
 
     ```prompt
-    You are the Contoso Adventure Works store assistant.
-    You help customers and store staff with questions about products, orders, returns, rentals, and guided trips.
+    You are the Adventure Works assistant.
+    You help customers plan guided trips and choose the right gear, and answer questions about products, orders, returns, rentals, and guided trips.
 
     Guidelines:
     - Always be friendly and helpful
     - Use the store policy documentation to answer questions accurately
+    - When a customer describes a trip, help them choose suitable gear and the right rental tier for it
     - If you don't know the answer, admit it and suggest contacting the support team directly
     ```
 
@@ -212,10 +213,10 @@ guessing.
 
     The agent should reference the store policy document in its answer.
 
-1. Try a second question to confirm it's using the grounding data:
+1. Try a second question that combines the policy data with a gear recommendation:
 
     ```
-    How do I rent gear for a weekend trip?
+    I'm planning a weekend trip in the Rockies — what gear should I rent for it?
     ```
 
 > ✅ **Checkpoint**: Your agent answers store questions using the uploaded policy document.
@@ -224,10 +225,11 @@ guessing.
 ## Task 2 — Extend an agent with a remote MCP server (code)
 
 The **Model Context Protocol (MCP)** lets an agent discover and call tools hosted by a
-server. Behind the scenes, the Contoso Adventure Works platform team is rebuilding the
-online store on Azure — so in this task you'll connect an agent to the **Microsoft Learn
-Docs** remote MCP server, giving the team an assistant that can pull trusted, up-to-date
-Azure documentation on demand.
+server. So far you've built the customer-facing advisor; now switch hats to the **Adventure
+Works engineering team** that builds and runs it on Azure. In this task you'll
+connect an agent to the **Microsoft Learn Docs** remote MCP server, giving that team an
+assistant that can pull trusted, up-to-date Azure documentation on demand as they build the
+trip-and-gear platform.
 
 ### Get the starter code
 
@@ -297,7 +299,7 @@ Open **agent.py** and add code at each commented placeholder.
         agent_name="platform-docs-agent",
         definition=PromptAgentDefinition(
             model=model_deployment,
-            instructions="You are a platform engineering assistant for Contoso Adventure Works. Use the available MCP tools to look up trusted Azure documentation and help the team build and operate the online store.",
+            instructions="You are a platform engineering assistant for Adventure Works. Use the available MCP tools to look up trusted Azure documentation and help the team build and operate the trip-and-gear platform.",
             tools=[mcp_tool],
         ),
     )
@@ -403,9 +405,9 @@ These tasks are independent — expand any that interest you, in any order. Each
 a **Try it first** prompt; expand **Show a solution** when you want the full walkthrough.
 
 > **One assistant, growing capabilities**: Tasks 3–5 all run behind the same provided web
-> chat window (`contoso_ui.py`) — the **Contoso Adventure Works Assistant**. You focus only
+> chat window (`adventure_ui.py`) — the **Adventure Works Assistant**. You focus only
 > on the agent code; each task gives the same assistant a new capability (analyzing sales
-> data, planning trips, and checking warehouse stock). You don't edit `contoso_ui.py`; you
+> data, planning trips and gear, and checking warehouse stock). You don't edit `adventure_ui.py`; you
 > just write a `respond()` function and hand it to `run_chat_app()`.
 
 <details markdown="1" class="opt-task" data-tier="2">
@@ -417,12 +419,12 @@ the playground — including charts the agent produces (from code interpreter), 
 
 **Concept reinforced**: consuming an agent programmatically with the Foundry SDK — loading
 an existing agent by name and driving it with the Responses API. A provided UI shell
-(`contoso_ui.py`) turns your agent into a browser chat app, so you focus on the agent code,
+(`adventure_ui.py`) turns your agent into a browser chat app, so you focus on the agent code,
 not the interface.
 
 **Set up:**
 
-1. In the portal, open your `trailhead-agent`, add a **Code interpreter** tool, and upload
+1. In the portal, open your `adventure-works-agent`, add a **Code interpreter** tool, and upload
     a data file so there's something to analyze. Download and attach:
 
     ```
@@ -433,7 +435,7 @@ not the interface.
 
 1. In VS Code, open the `Labfiles/A-build-and-extend-ai-agents/portal-agent/Python` folder.
     Create a virtual environment, install requirements, then open **.env** and set
-    `PROJECT_ENDPOINT` and `AGENT_NAME` (`trailhead-agent`):
+    `PROJECT_ENDPOINT` and `AGENT_NAME` (`adventure-works-agent`):
 
     ```
     python -m venv labenv
@@ -475,7 +477,7 @@ The provided `agent_with_functions.py` already implements the client and hands i
 4. **Launch the app**: the file ends by starting the browser chat window:
 
     ```python
-    run_chat_app(respond, title="Contoso Adventure Works Assistant")
+    run_chat_app(respond, title="Adventure Works Assistant")
     ```
 
 Sign in and run it:
@@ -561,7 +563,7 @@ same pattern as Task 2). The file is structured so your agent setup runs once, t
         agent_name="trip-planner-agent",
         definition=PromptAgentDefinition(
             model=model_deployment,
-            instructions="""You are a trip planning assistant for Contoso Adventure Works that helps
+            instructions="""You are a trip planning assistant for Adventure Works that helps
                 customers find guided trips and calculate gear rental costs.
                 Use the available tools to assist users with their inquiries.""",
             tools=[trip_tool, cost_tool, report_tool],
@@ -634,7 +636,7 @@ deleted automatically on exit).
 <summary><strong>Task 5 — Build your own MCP server</strong> &middot; ★★★ &middot; ~30 min</summary>
 
 **Goal**: Instead of connecting to someone else's MCP server, host your **own** tools and
-connect an agent to them. Here you'll give Contoso Adventure Works a warehouse assistant
+connect an agent to them. Here you'll give Adventure Works a warehouse assistant
 that reads live stock and sales figures.
 
 **Concept reinforced**: the MCP server/client split — a server *registers* tools; a client
