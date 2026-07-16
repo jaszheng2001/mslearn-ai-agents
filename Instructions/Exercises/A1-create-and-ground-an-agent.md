@@ -33,7 +33,7 @@ details.concept > summary::before { content:"\1F4AC  Ask Anton: "; font-weight:7
 details.concept > summary:hover { background:#0969da; color:#fff; border-color:#0969da; }
 details.concept[open] > summary { border-bottom-left-radius:0; border-bottom-right-radius:0; }
 details.concept .concept-body { border:1px solid #0969da33; border-top:none;
-  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#0969da08; font-size:.95em; }
+  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#fff; font-size:.95em; }
 </style>
 
 <details markdown="1" class="concept">
@@ -44,7 +44,7 @@ The single most important capability for the Trailhead Adventure Works agent is 
 Grounding attaches trusted source material — such as the store policy document — so the
 agent answers *from that data* instead of inventing a response.
 
-[Learn more →](https://review.learn.microsoft.com/en-us/training/modules/build-extend-ai-agents/2-understand-agents-foundry?branch=pr-en-us-55509)
+<a href="https://review.learn.microsoft.com/en-us/training/modules/build-extend-ai-agents/2-understand-agents-foundry?branch=pr-en-us-55509" target="_blank" rel="noopener">Learn more →</a>
 
 </div>
 </details>
