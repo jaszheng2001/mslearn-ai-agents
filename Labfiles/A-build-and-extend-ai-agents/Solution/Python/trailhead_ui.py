@@ -1,5 +1,9 @@
 """
+<<<<<<<< HEAD:Labfiles/A-build-and-extend-ai-agents/Solution/Python/adventure_ui.py
 Adventure Works – shared chat UI shell (provided).
+========
+Trailhead Adventure Works – shared chat UI shell (provided).
+>>>>>>>> consolidate-labs-idea:Labfiles/A-build-and-extend-ai-agents/Solution/Python/trailhead_ui.py
 
 You don't need to edit this file. It gives every task in the lab the same simple
 web chat window so your agent feels like a real app instead of a console script.
@@ -26,7 +30,11 @@ class AgentReply:
 
 def run_chat_app(
     respond: Callable,
+<<<<<<<< HEAD:Labfiles/A-build-and-extend-ai-agents/Solution/Python/adventure_ui.py
     title: str = "Adventure Works Assistant",
+========
+    title: str = "Trailhead Adventure Works Assistant",
+>>>>>>>> consolidate-labs-idea:Labfiles/A-build-and-extend-ai-agents/Solution/Python/trailhead_ui.py
     subtitle: str = "",
     placeholder: str = "Ask the assistant...",
     server_port: int = 7860,
