@@ -13,7 +13,7 @@ This page sets up everything the **Build and extend AI agents** lab needs. Compl
 **once**, then do any task — [Task 1](A1-create-and-ground-an-agent.md) through
 [Task 5](A5-capstone-build-your-own-mcp-server.md) — on its own or in order.
 
-**Your scenario:** you work at **Trailhead Adventure Works**, an outdoor-gear retailer that
+**Your scenario:** you work at **Tailwind Traders**, an outdoor-gear retailer that
 also runs guided trips. Across the lab you'll build the staff assistant that powers the
 business, adding one capability per task.
 
@@ -60,7 +60,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
 1. Select **Create** and wait for your project to be created. When prompted, continue through the welcome dialog and select **Create agent**.
 
-1. Set the **Agent name** to `trailhead-agent` and create the agent. The playground opens with a deployed model already selected for you.
+1. Set the **Agent name** to `tailwind-agent` and create the agent. The playground opens with a deployed model already selected for you.
 
 Keep this browser tab open — you'll use it in Task 1.
 

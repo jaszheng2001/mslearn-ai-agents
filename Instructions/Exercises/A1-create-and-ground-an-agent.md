@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Task 1 – Create and ground an agent'
-    description: 'Create an agent in the Microsoft Foundry portal and ground it in Trailhead Adventure Works store policy so it answers from your data.'
+    description: 'Create an agent in the Microsoft Foundry portal and ground it in Tailwind Traders store policy so it answers from your data.'
     level: 300
     concepts: 'agent creation, grounding, file search'
     islab: true
@@ -25,7 +25,7 @@ guessing.
 1. In the agent playground, set the **Instructions** to:
 
     ```prompt
-    You are the Trailhead Adventure Works store assistant.
+    You are the Tailwind Traders store assistant.
     You help customers and store staff with questions about products, orders, returns, rentals, and guided trips.
 
     Guidelines:

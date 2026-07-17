@@ -1,5 +1,5 @@
 """
-Fast-forward setup for the Trailhead Adventure Works lab.
+Fast-forward setup for the Tailwind Traders lab.
 
 Task 3 needs the grounded agent you would normally build by hand in Task 1
 (and extend at the start of Task 3). If you're starting at Task 3 on its own,
@@ -9,10 +9,10 @@ run this once to create that agent for you:
 
 It reproduces, in code, exactly what Tasks 1 and 3 have you do in the portal:
 
-  * creates an agent named 'trailhead-agent'
+  * creates an agent named 'tailwind-agent'
   * grounds it on Store_Policy.txt with the File Search tool
   * adds the Code Interpreter tool with weekly_sales.csv attached
-  * writes AGENT_NAME=trailhead-agent into Python/.env
+  * writes AGENT_NAME=tailwind-agent into Python/.env
 
 Prerequisites: PROJECT_ENDPOINT and MODEL_DEPLOYMENT_NAME set in Python/.env
 (run 'azd up', or fill them in from the portal), and 'az login' completed.
@@ -38,10 +38,10 @@ from azure.core.exceptions import ResourceNotFoundError
 from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 
-AGENT_NAME = "trailhead-agent"
+AGENT_NAME = "tailwind-agent"
 
 # The same instructions Task 1 has you paste into the portal.
-INSTRUCTIONS = """You are the Trailhead Adventure Works store assistant.
+INSTRUCTIONS = """You are the Tailwind Traders store assistant.
 You help customers and store staff with questions about products, orders, returns, rentals, and guided trips.
 
 Guidelines:
@@ -76,7 +76,7 @@ def build_vector_store(openai_client, file_id):
     """Create a vector store for File Search and wait until it's indexed."""
     print("  Creating vector store for Store_Policy.txt ...")
     vector_store = openai_client.vector_stores.create(
-        name="trailhead-store-policy",
+        name="tailwind-store-policy",
         file_ids=[file_id],
     )
 
@@ -117,7 +117,7 @@ def set_env_value(key, value):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Create and ground the trailhead-agent for Task 3."
+        description="Create and ground the tailwind-agent for Task 3."
     )
     parser.add_argument(
         "--force",

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 # Import the local functions the agent can call, and the shared chat UI
 from functions import next_available_trip, calculate_rental_cost, generate_booking_report
-from trailhead_ui import run_chat_app, AgentReply
+from tailwind_ui import run_chat_app, AgentReply
 
 # Load environment variables from .env file
 load_dotenv()
@@ -58,11 +58,14 @@ with (
         # Process function calls
 
 
-        # Send function call outputs back to the model and retrieve a response
+        # Send function call outputs back to the model and retrieve a response.
+        # Attach them to the same conversation so the tool calls are resolved in
+        # conversation state — otherwise the next turn fails with "No tool output
+        # found for function call".
         if input_list:
             response = openai_client.responses.create(
+                conversation=conversation.id,
                 input=input_list,
-                previous_response_id=response.id,
                 extra_body={"agent_reference": {"name": agent.name, "type": "agent_reference"}},
             )
 
@@ -73,7 +76,7 @@ with (
     try:
         run_chat_app(
             respond,
-            title="Trailhead Adventure Works Assistant",
+            title="Tailwind Traders Assistant",
             subtitle="Plan a guided trip and price your gear rental.",
         )
     finally:
