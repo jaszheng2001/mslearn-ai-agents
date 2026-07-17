@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Build and extend AI agents'
-    description: 'Build the Trailhead Adventure Works assistant: ground it in store policy, then extend it with tools using remote MCP servers, custom functions, and a client app. A modular lab you can complete end to end or one task at a time.'
+    description: 'Build the Tailwind Traders assistant: ground it in store policy, then extend it with tools using remote MCP servers, custom functions, and a client app. A modular lab you can complete end to end or one task at a time.'
     level: 300
     concepts: 'agent creation and grounding, tools, Model Context Protocol (MCP)'
     duration: 35
@@ -28,7 +28,7 @@ An agent becomes genuinely useful when it can *do* things — look up live infor
 call your business logic, and act on a user's behalf. In this lab you'll build a
 grounded agent and then give it capabilities using **tools**.
 
-**Your scenario:** you work at **Trailhead Adventure Works**, an outdoor-gear retailer that
+**Your scenario:** you work at **Tailwind Traders**, an outdoor-gear retailer that
 also runs guided trips. Across this lab you'll build the staff assistant that powers the
 business, adding one capability per task: first grounding it in the store's own policies,
 then connecting it to live documentation, letting it analyze sales data, take trip
@@ -91,9 +91,9 @@ including all optional tasks, takes about **1 hour 55 minutes**.
 - **Everything (~1h 55m):** add **Task 5** (the capstone builds on Task 4, so do Task 4 first).
 
 > **One assistant, growing capabilities**: Tasks 3–5 all run behind the same provided web
-> chat window (`trailhead_ui.py`) — the **Trailhead Adventure Works Assistant**. You focus only
+> chat window (`tailwind_ui.py`) — the **Tailwind Traders Assistant**. You focus only
 > on the agent code; each task gives the same assistant a new capability (analyzing sales
-> data, planning trips, and checking warehouse stock). You don't edit `trailhead_ui.py`; you
+> data, planning trips, and checking warehouse stock). You don't edit `tailwind_ui.py`; you
 > just write a `respond()` function and hand it to `run_chat_app()`.
 
 ## Two ways to build the same agent

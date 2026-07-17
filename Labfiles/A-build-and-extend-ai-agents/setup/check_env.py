@@ -1,5 +1,5 @@
 """
-Preflight check for the Trailhead Adventure Works lab.
+Preflight check for the Tailwind Traders lab.
 
 Each task in this lab can be completed on its own. Before you start a task,
 run this script to confirm your .env file has everything that task needs:
@@ -57,7 +57,7 @@ FIX_HINTS = {
     ),
     "AGENT_NAME": (
         "Task 3 needs the grounded portal agent from Task 1. Either complete Task 1 in "
-        "the portal and set AGENT_NAME=trailhead-agent, or fast-forward past Task 1 by "
+        "the portal and set AGENT_NAME=tailwind-agent, or fast-forward past Task 1 by "
         "running: python setup/bootstrap_agent.py"
     ),
 }

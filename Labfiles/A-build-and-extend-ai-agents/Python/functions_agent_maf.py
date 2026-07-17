@@ -30,7 +30,7 @@ from pydantic import Field
 
 # Reuse the same trip-planner logic from Task 4, plus the shared chat UI
 import functions
-from trailhead_ui import run_chat_app, AgentReply
+from tailwind_ui import run_chat_app, AgentReply
 
 # Load environment variables from .env file
 load_dotenv()
@@ -80,7 +80,7 @@ client = FoundryChatClient(
 agent = Agent(
     client=client,
     name="trip-planner-agent",
-    instructions="""You are a trip planning assistant for Trailhead Adventure Works that helps
+    instructions="""You are a trip planning assistant for Tailwind Traders that helps
         customers find guided trips and calculate gear rental costs.
         Use the available tools to assist users with their inquiries.""",
     tools=[next_available_trip, calculate_rental_cost, generate_booking_report],
@@ -101,6 +101,6 @@ async def respond(user_message):
 if __name__ == "__main__":
     run_chat_app(
         respond,
-        title="Trailhead Adventure Works Assistant",
+        title="Tailwind Traders Assistant",
         subtitle="Plan a guided trip and price your gear rental. (Microsoft Agent Framework edition)",
     )

@@ -81,7 +81,7 @@ same pattern as Task 2). The file is structured so your agent setup runs once, t
         agent_name="trip-planner-agent",
         definition=PromptAgentDefinition(
             model=model_deployment,
-            instructions="""You are a trip planning assistant for Trailhead Adventure Works that helps
+            instructions="""You are a trip planning assistant for Tailwind Traders that helps
                 customers find guided trips and calculate gear rental costs.
                 Use the available tools to assist users with their inquiries.""",
             tools=[trip_tool, cost_tool, report_tool],
@@ -113,14 +113,17 @@ same pattern as Task 2). The file is structured so your agent setup runs once, t
     ```
 
     The rest of `respond()` (already provided) sends the outputs back and returns the final
-    answer to the chat window:
+    answer to the chat window. Note that it attaches the outputs to the same **conversation**
+    so the tool calls are resolved in conversation state — sending them back with
+    `previous_response_id` instead would make the *next* message fail with *"No tool output
+    found for function call"*:
 
     ```python
     # Send function call outputs back to the model and retrieve a response
     if input_list:
         response = openai_client.responses.create(
+            conversation=conversation.id,
             input=input_list,
-            previous_response_id=response.id,
             extra_body={"agent_reference": {"name": agent.name, "type": "agent_reference"}},
         )
 
@@ -185,7 +188,7 @@ agent = Agent(
         credential=AzureCliCredential(),
     ),
     name="trip-planner-agent",
-    instructions="You are a trip planning assistant for Trailhead Adventure Works...",
+    instructions="You are a trip planning assistant for Tailwind Traders...",
     tools=[next_available_trip, calculate_rental_cost, generate_booking_report],
 )
 

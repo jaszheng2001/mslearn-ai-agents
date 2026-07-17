@@ -18,7 +18,7 @@ Solution/
    ├─ server.py               # Task 5 — your MCP server (inventory + sales tools)
    ├─ client.py               # Task 5 — capstone: MCP client that combines Task 4 + Task 5 tools
    ├─ client_maf.py           #   Task 5 — same capstone, Microsoft Agent Framework edition
-   ├─ trailhead_ui.py         # shared Gradio chat shell (provided; not edited by learners)
+   ├─ tailwind_ui.py         # shared Gradio chat shell (provided; not edited by learners)
    ├─ Store_Policy.txt        # Task 1 grounding doc (uploaded to the portal agent)
    ├─ weekly_sales.csv        # Task 3 code-interpreter data (uploaded to the portal agent)
    └─ data/                   #   Task 4 lookup data (trips, rental rates, service multipliers)
@@ -26,7 +26,7 @@ Solution/
 
 Because everything lives in one folder, the two `agent.py` files from the source labs were
 renamed to avoid a collision: **`remote_mcp_agent.py`** (Task 2) and **`functions_agent.py`**
-(Task 4). `trailhead_ui.py` (the shared Gradio chat shell) appears once and is **not**
+(Task 4). `tailwind_ui.py` (the shared Gradio chat shell) appears once and is **not**
 something learners edit.
 
 ---
@@ -43,7 +43,7 @@ This lab can be completed end to end **or one task at a time**. Two things make 
 - **Setup scripts** in `Labfiles/A-build-and-extend-ai-agents/setup/`:
   - `check_env.py --task N` — preflight-checks that `.env` has the keys task *N* needs.
   - `bootstrap_agent.py` — **fast-forwards Task 1 in code**: creates and grounds
-    `trailhead-agent` (File Search on `Store_Policy.txt` + Code Interpreter on `weekly_sales.csv`)
+    `tailwind-agent` (File Search on `Store_Policy.txt` + Code Interpreter on `weekly_sales.csv`)
     and writes `AGENT_NAME` to `.env`, so learners can start at **Task 3** without the portal.
     Idempotent; pass `--force` to recreate.
 
@@ -89,17 +89,17 @@ traceback prints in the terminal**.
 
 ### 3. Create the portal agent (Task 1 — required for Task 3)
 The Task 3 client loads an agent **by name** that you create in the portal:
-1. In the Foundry portal, create an agent named **`trailhead-agent`**.
+1. In the Foundry portal, create an agent named **`tailwind-agent`**.
 2. Ground it: upload **`Store_Policy.txt`** (from `Python/`) and give it instructions to
    answer from store policy.
 3. For Task 3's chart demo, add the **Code interpreter** tool and upload **`weekly_sales.csv`**
    (from the same folder). Save the agent.
 
-> Tasks 4 and 5 create their own agents in code (`trip-planner-agent`, `trailhead-assistant`)
+> Tasks 4 and 5 create their own agents in code (`trip-planner-agent`, `tailwind-assistant`)
 > and delete them on exit — no portal work needed for those.
 
 > **Shortcut**: instead of the portal steps above, run `python setup/bootstrap_agent.py` from
-> the `Python/` folder to create and ground `trailhead-agent` in code and write `AGENT_NAME`.
+> the `Python/` folder to create and ground `tailwind-agent` in code and write `AGENT_NAME`.
 
 ### 4. Set up the environment once (shared by all tasks)
 From the `Python/` folder:
@@ -111,7 +111,7 @@ pip install -r requirements.txt
 Then copy `.env.example` to `.env` and fill in the values (all tasks read the same file):
 - `PROJECT_ENDPOINT` — used by every task
 - `MODEL_DEPLOYMENT_NAME` — used by Tasks 2, 4, and 5
-- `AGENT_NAME=trailhead-agent` — used by Task 3
+- `AGENT_NAME=tailwind-agent` — used by Task 3
 
 ### 5. Run each task
 All commands run from the single `Python/` folder:

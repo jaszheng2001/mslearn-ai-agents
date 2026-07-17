@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Task 5 – Capstone: build your own MCP server'
-    description: 'Capstone: build your own MCP server and combine it with your function tools into one Trailhead Adventure Works assistant.'
+    description: 'Capstone: build your own MCP server and combine it with your function tools into one Tailwind Traders assistant.'
     level: 300
     concepts: 'MCP server, tool orchestration, Microsoft Agent Framework'
     islab: true
@@ -27,7 +27,7 @@ lab:
 ---
 
 **Goal**: Host your **own** tools on an MCP server, then bring the lab together into a single
-**Trailhead Adventure Works Assistant** — one agent that both **plans trips and prices gear**
+**Tailwind Traders Assistant** — one agent that both **plans trips and prices gear**
 (the function tools from Task 4) *and* **checks live warehouse stock and sales** (the tools
 you host here).
 
@@ -126,11 +126,11 @@ the first message.
 
     ```python
     agent = project_client.agents.create_version(
-        agent_name="trailhead-assistant",
+        agent_name="tailwind-assistant",
         definition=PromptAgentDefinition(
             model=model_deployment,
             instructions="""
-            You are the Trailhead Adventure Works assistant. You help customers plan guided
+            You are the Tailwind Traders assistant. You help customers plan guided
             trips and price gear rentals, and you help warehouse staff check live stock and sales.
 
             Trip planning and rentals:
@@ -210,8 +210,8 @@ from agent_framework import tool, Agent, MCPStdioTool
 
 agent = Agent(
     client=FoundryChatClient(...),
-    name="trailhead-assistant",
-    instructions="You are the Trailhead Adventure Works assistant...",
+    name="tailwind-assistant",
+    instructions="You are the Tailwind Traders assistant...",
     tools=[next_available_trip, calculate_rental_cost, generate_booking_report],
 )
 

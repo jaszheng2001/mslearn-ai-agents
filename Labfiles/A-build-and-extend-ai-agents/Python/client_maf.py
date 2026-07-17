@@ -33,7 +33,7 @@ from pydantic import Field
 # The Task 4 trip-planner logic, reused so the capstone agent can plan trips AND
 # check the warehouse (the tools your MCP server hosts).
 import functions
-from trailhead_ui import run_chat_app, AgentReply
+from tailwind_ui import run_chat_app, AgentReply
 
 # Load environment variables from .env file
 load_dotenv()
@@ -99,9 +99,9 @@ async def setup():
     # The agent holds the local trip-planner tools; the MCP tools are supplied per run.
     agent = Agent(
         client=client,
-        name="trailhead-assistant",
+        name="tailwind-assistant",
         instructions="""
-        You are the Trailhead Adventure Works assistant. You help customers plan guided
+        You are the Tailwind Traders assistant. You help customers plan guided
         trips and price gear rentals, and you help warehouse staff check live stock and sales.
 
         Trip planning and rentals:
@@ -132,6 +132,6 @@ async def respond(user_message):
 if __name__ == "__main__":
     run_chat_app(
         respond,
-        title="Trailhead Adventure Works Assistant",
+        title="Tailwind Traders Assistant",
         subtitle="Plan trips, price gear, and check warehouse stock (Microsoft Agent Framework edition)",
     )

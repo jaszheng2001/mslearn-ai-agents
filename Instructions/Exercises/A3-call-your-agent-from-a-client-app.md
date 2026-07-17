@@ -23,7 +23,7 @@ lab:
 > python setup/bootstrap_agent.py
 > ```
 >
-> That creates and grounds `trailhead-agent` — including the **Code Interpreter** tool with the
+> That creates and grounds `tailwind-agent` — including the **Code Interpreter** tool with the
 > sales data already attached — and writes `AGENT_NAME` into your `.env`. If you used it, you can
 > skip the portal "Set up" step below that adds Code Interpreter. Then verify you're ready:
 >
@@ -39,12 +39,12 @@ the playground — including charts the agent produces (from code interpreter), 
 
 **Concept reinforced**: consuming an agent programmatically with the Foundry SDK — loading
 an existing agent by name and driving it with the Responses API. A provided UI shell
-(`trailhead_ui.py`) turns your agent into a browser chat app, so you focus on the agent code,
+(`tailwind_ui.py`) turns your agent into a browser chat app, so you focus on the agent code,
 not the interface.
 
 **Set up:**
 
-1. In the portal, open your `trailhead-agent`, add a **Code interpreter** tool, and upload
+1. In the portal, open your `tailwind-agent`, add a **Code interpreter** tool, and upload
     a data file so there's something to analyze. Download and attach:
 
     ```
@@ -55,7 +55,7 @@ not the interface.
 
 1. Use the same `Labfiles/A-build-and-extend-ai-agents/Python` folder and virtual environment
     you set up in [Getting started](A0-getting-started.md) (if you closed the terminal, reactivate with
-    `.\labenv\Scripts\Activate.ps1`). Then open **.env** and add `AGENT_NAME=trailhead-agent`
+    `.\labenv\Scripts\Activate.ps1`). Then open **.env** and add `AGENT_NAME=tailwind-agent`
     alongside the `PROJECT_ENDPOINT` you already set. Save the file.
 
 > **Try it first**: The `agent_with_functions.py` file already contains a complete client
@@ -92,7 +92,7 @@ The provided `agent_with_functions.py` already implements the client and hands i
 4. **Launch the app**: the file ends by starting the browser chat window:
 
     ```python
-    run_chat_app(respond, title="Trailhead Adventure Works Assistant")
+    run_chat_app(respond, title="Tailwind Traders Assistant")
     ```
 
 Sign in and run it:
