@@ -12,15 +12,18 @@ lab:
 
 *Part of the **Build and extend AI agents** lab. New here? Start with [Getting started](A0-getting-started.md).*
 
-> **Starting here on its own?** First complete [Getting started](A0-getting-started.md) to
-> create your Foundry project, clone the starter code, and set up your `.env`.
->
-> **This task needs** `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `Python/.env`. From the
-> `Labfiles/A-build-and-extend-ai-agents` folder, verify you're ready:
+> **Set up (start here):** This task needs a Foundry project and the starter code. If you
+> haven't already, complete [Getting started](A0-getting-started.md) to create your project,
+> clone the code, and set `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `Python/.env`.
+> Then, from the `Labfiles/A-build-and-extend-ai-agents` folder, verify you're ready:
 >
 > ```
 > python setup/check_env.py --task 2
 > ```
+>
+> > **Continuing from a previous task?** If you just finished an earlier task in the same
+> > `Python` folder, your project, virtual environment, and `.env` are already set — go
+> > straight to **Connect the agent to the MCP server** below.
 
 ---
 
@@ -30,7 +33,7 @@ online store on Azure — so in this task you'll connect an agent to the **Micro
 Docs** remote MCP server, giving the team an assistant that can pull trusted, up-to-date
 Azure documentation on demand.
 
-Open the shared `Python` folder and virtual environment you created in [Getting started](A0-getting-started.md), then continue below.
+Open the `Python` folder and activate the virtual environment from [Getting started](A0-getting-started.md) (`.\labenv\Scripts\Activate.ps1`), then continue below.
 
 ### Connect the agent to the MCP server
 

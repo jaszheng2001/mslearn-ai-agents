@@ -12,17 +12,19 @@ lab:
 
 *Part of the **Build and extend AI agents** lab. New here? Start with [Getting started](A0-getting-started.md).*
 
-> **Starting here on its own?** This is the **capstone**. First complete
-> [Getting started](A0-getting-started.md) to create your Foundry project, clone the starter
-> code, and set up your `.env`.
->
-> **This task needs** `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `Python/.env`. It reuses
-> `functions.py` from [Task 4](A4-add-custom-function-tools.md) — already in the starter folder,
-> so you don't need to have finished Task 4. Verify you're ready:
+> **Set up (start here):** This is the **capstone**. It needs a Foundry project and the
+> starter code. If you haven't already, complete [Getting started](A0-getting-started.md) to
+> create your project, clone the code, and set `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME`
+> in `Python/.env`. It reuses `functions.py` from [Task 4](A4-add-custom-function-tools.md) —
+> already in the starter folder, so you don't need to have finished Task 4. Then verify:
 >
 > ```
 > python setup/check_env.py --task 5
 > ```
+>
+> > **Continuing from a previous task?** If you just finished an earlier task in the same
+> > `Python` folder, your project, virtual environment, and `.env` are already set — go
+> > straight to **Set up** below to start editing `server.py` and `client.py`.
 
 ---
 
@@ -36,16 +38,18 @@ you host here).
 once. In `respond()` you *route* each call to the right place: local Python functions run
 in-process, MCP tools run over the server session.
 
-> **Prerequisite**: This capstone builds directly on **Task 4** — complete it first. The
-> trip-planner tools you wrote there (`next_available_trip`, `calculate_rental_cost`,
-> `generate_booking_report`) are provided ready-made in `client.py` so you can focus on the
-> new work: hosting your MCP server and *combining* both tool sets on one agent.
+> **How this builds on Task 4**: This capstone *combines* the trip-planner tools from Task 4
+> with a new MCP server. You don't need to have finished Task 4 — those tools
+> (`next_available_trip`, `calculate_rental_cost`, `generate_booking_report`) are provided
+> ready-made in `client.py` — so you can focus on the new work: hosting your MCP server and
+> *combining* both tool sets on one agent. (Already did Task 4? Even better — you'll recognize them.)
 
 **Set up:**
 
-1. Use the same `Labfiles/A-build-and-extend-ai-agents/Python` folder and virtual environment
-    you set up in [Getting started](A0-getting-started.md) (reactivate with `.\labenv\Scripts\Activate.ps1` if needed; your
-    **.env** is already configured). You'll edit **server.py** and **client.py**.
+1. In the `Labfiles/A-build-and-extend-ai-agents/Python` folder, activate the virtual
+    environment (`.\labenv\Scripts\Activate.ps1`) and confirm your **.env** has
+    `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` (see [Getting started](A0-getting-started.md)).
+    You'll edit **server.py** and **client.py**.
 
 > **Try it first**: Wire up **server.py** and **client.py** using the comments in each file.
 > As you go, consider: why must diagnostic output go to `stderr` (or be suppressed) rather
