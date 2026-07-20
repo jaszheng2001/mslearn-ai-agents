@@ -51,7 +51,7 @@ def run_chat_app(
 
         return history, ""
 
-    with gr.Blocks(title=title, css="footer {visibility: hidden}") as demo:
+    with gr.Blocks(title=title) as demo:
         gr.Markdown(f"## \U0001F3D4\uFE0F {title}")
         if subtitle:
             gr.Markdown(subtitle)
@@ -65,4 +65,4 @@ def run_chat_app(
         for trigger in (textbox.submit, send.click):
             trigger(handle, [textbox, chatbot], [chatbot, textbox])
 
-    demo.launch(server_port=server_port, inbrowser=True, show_api=False, theme=gr.themes.Soft())
+    demo.launch(server_port=server_port, inbrowser=True, css="footer {visibility: hidden}", theme=gr.themes.Soft())
