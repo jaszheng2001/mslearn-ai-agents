@@ -30,6 +30,35 @@ online store on Azure — so in this task you'll connect an agent to the **Micro
 Docs** remote MCP server, giving the team an assistant that can pull trusted, up-to-date
 Azure documentation on demand.
 
+<style>
+/* "Ask Anton" just-in-time concept blocks */
+details.concept { margin:.6rem 0 1rem; }
+details.concept > summary { display:inline-block; cursor:pointer; list-style:none;
+  font-size:.85em; font-weight:600; color:#0969da; background:#0969da12;
+  border:1px solid #0969da33; border-radius:999px; padding:.2em .7em; }
+details.concept > summary::-webkit-details-marker { display:none; }
+details.concept > summary::before { content:"Ask Anton: "; font-weight:700;
+  padding-left:1.5em;
+  background:url("../Media/anton-avatar.png") left center / 1.25em 1.25em no-repeat; }
+details.concept > summary:hover { background:#0969da; color:#fff; border-color:#0969da; }
+details.concept[open] > summary { border-bottom-left-radius:0; border-bottom-right-radius:0; }
+details.concept .concept-body { border:1px solid #0969da33; border-top:none;
+  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#0969da08; font-size:.95em; }
+</style>
+
+<details markdown="1" class="concept">
+<summary>What is MCP?</summary>
+<div class="concept-body" markdown="1">
+
+The **Model Context Protocol (MCP)** solves this by letting an agent discover tools at
+runtime. With MCP, tools live on a **server** that acts as a live catalog. Your agent
+(through a **client**) asks the server what tools are available and calls them on demand.
+
+[Learn more →](https://review.learn.microsoft.com/en-us/training/modules/build-extend-ai-agents/5-connect-agents-to-mcp?branch=pr-en-us-55509)
+
+</div>
+</details>
+
 Open the shared `Python` folder and virtual environment you created in [Getting started](A0-getting-started.md), then continue below.
 
 ### Connect the agent to the MCP server

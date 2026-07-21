@@ -22,6 +22,35 @@ lab:
 Grounding gives your agent trusted source material so it answers accurately instead of
 guessing.
 
+<style>
+/* "Ask Anton" just-in-time concept blocks */
+details.concept { margin:.6rem 0 1rem; }
+details.concept > summary { display:inline-block; cursor:pointer; list-style:none;
+  font-size:.85em; font-weight:600; color:#0969da; background:#0969da12;
+  border:1px solid #0969da33; border-radius:999px; padding:.2em .7em; }
+details.concept > summary::-webkit-details-marker { display:none; }
+details.concept > summary::before { content:"Ask Anton: "; font-weight:700;
+  padding-left:1.5em;
+  background:url("../Media/anton-avatar.png") left center / 1.25em 1.25em no-repeat; }
+details.concept > summary:hover { background:#0969da; color:#fff; border-color:#0969da; }
+details.concept[open] > summary { border-bottom-left-radius:0; border-bottom-right-radius:0; }
+details.concept .concept-body { border:1px solid #0969da33; border-top:none;
+  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#0969da08; font-size:.95em; }
+</style>
+
+<details markdown="1" class="concept">
+<summary>What is grounding?</summary>
+<div class="concept-body" markdown="1">
+
+The single most important capability for the Tailwind Traders agent is **grounding**.
+Grounding attaches trusted source material — such as the store policy document — so the
+agent answers *from that data* instead of inventing a response.
+
+[Learn more →](https://review.learn.microsoft.com/en-us/training/modules/build-extend-ai-agents/2-understand-agents-foundry?branch=pr-en-us-55509)
+
+</div>
+</details>
+
 1. In the agent playground, set the **Instructions** to:
 
     ```prompt

@@ -28,6 +28,35 @@ An agent becomes genuinely useful when it can *do* things — look up live infor
 call your business logic, and act on a user's behalf. In this lab you'll build a
 grounded agent and then give it capabilities using **tools**.
 
+<style>
+/* "Ask Anton" just-in-time concept blocks */
+details.concept { margin:.6rem 0 1rem; }
+details.concept > summary { display:inline-block; cursor:pointer; list-style:none;
+  font-size:.85em; font-weight:600; color:#0969da; background:#0969da12;
+  border:1px solid #0969da33; border-radius:999px; padding:.2em .7em; }
+details.concept > summary::-webkit-details-marker { display:none; }
+details.concept > summary::before { content:"Ask Anton: "; font-weight:700;
+  padding-left:1.5em;
+  background:url("../Media/anton-avatar.png") left center / 1.25em 1.25em no-repeat; }
+details.concept > summary:hover { background:#0969da; color:#fff; border-color:#0969da; }
+details.concept[open] > summary { border-bottom-left-radius:0; border-bottom-right-radius:0; }
+details.concept .concept-body { border:1px solid #0969da33; border-top:none;
+  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#0969da08; font-size:.95em; }
+</style>
+
+<details markdown="1" class="concept">
+<summary>What is an agent?</summary>
+<div class="concept-body" markdown="1">
+
+An AI agent is a software service that uses generative AI to understand a request, decide
+what to do, and take action on a user's behalf. What makes an agent genuinely useful isn't
+the model alone — it's the **knowledge** you ground it in and the **tools** you give it.
+
+[Learn more →](https://review.learn.microsoft.com/en-us//training/modules/build-extend-ai-agents/1-introduction?branch=pr-en-us-55509)
+
+</div>
+</details>
+
 **Your scenario:** you work at **Tailwind Traders**, an outdoor-gear retailer that
 also runs guided trips. Across this lab you'll build the staff assistant that powers the
 business, adding one capability per task: first grounding it in the store's own policies,
