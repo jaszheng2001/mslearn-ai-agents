@@ -37,16 +37,16 @@ Azure documentation on demand.
 /* "Ask Anton" just-in-time concept blocks */
 details.concept { margin:.6rem 0 1rem; }
 details.concept > summary { display:inline-block; cursor:pointer; list-style:none;
-  font-size:.85em; font-weight:600; color:#0969da; background:#0969da12;
-  border:1px solid #0969da33; border-radius:999px; padding:.2em .7em; }
+  font-size:.85em; font-weight:600; color:#6b4ba1; background:#6b4ba112;
+  border:1px solid #6b4ba133; border-radius:999px; padding:.2em .7em; }
 details.concept > summary::-webkit-details-marker { display:none; }
 details.concept > summary::before { content:"Ask Anton: "; font-weight:700;
   padding-left:1.5em;
   background:url("../Media/anton-avatar.png") left center / 1.25em 1.25em no-repeat; }
-details.concept > summary:hover { background:#0969da; color:#fff; border-color:#0969da; }
+details.concept > summary:hover { background:#6b4ba1; color:#fff; border-color:#6b4ba1; }
 details.concept[open] > summary { border-bottom-left-radius:0; border-bottom-right-radius:0; }
-details.concept .concept-body { border:1px solid #0969da33; border-top:none;
-  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#0969da08; font-size:.95em; }
+details.concept .concept-body { border:1px solid #6b4ba133; border-top:none;
+  border-radius:0 8px 8px 8px; padding:.6rem .9rem; background:#6b4ba108; font-size:.95em; }
 </style>
 
 <details markdown="1" class="concept">
