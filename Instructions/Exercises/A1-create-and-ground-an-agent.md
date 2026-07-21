@@ -12,10 +12,10 @@ lab:
 
 *Part of the **Build and extend AI agents** lab. New here? Start with [Getting started](A0-getting-started.md).*
 
-> **Starting here on its own?** You need a Microsoft Foundry project with a deployed model.
-> If you don't have one yet, complete [Getting started](A0-getting-started.md) first
-> (Option A creates it in the portal). Task 1 is completed entirely in the portal — no local
-> code or `.env` file is required.
+> **What you need:** a **Microsoft Foundry project with a deployed model**. Don't have one
+> yet? Complete [Getting started](A0-getting-started.md) first (Option A creates it in the
+> portal). This task is completed entirely in the portal — no local code or `.env` file is
+> required, so there's nothing to carry over from other tasks.
 
 ---
 

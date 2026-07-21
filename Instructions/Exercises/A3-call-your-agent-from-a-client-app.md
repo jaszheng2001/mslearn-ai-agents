@@ -12,24 +12,27 @@ lab:
 
 *Part of the **Build and extend AI agents** lab. New here? Start with [Getting started](A0-getting-started.md).*
 
-> **Starting here on its own?** First complete [Getting started](A0-getting-started.md) to set
-> up your Foundry project and `.env`.
+> **Set up (start here):** This task needs a Foundry project and the starter code. If you
+> haven't already, complete [Getting started](A0-getting-started.md) to create your project,
+> clone the code, and set `PROJECT_ENDPOINT` in `Python/.env`.
 >
-> Task 3 drives the **grounded agent** you build in [Task 1](A1-create-and-ground-an-agent.md).
-> If you didn't do Task 1, create that agent in code with one command (from the
-> `Labfiles/A-build-and-extend-ai-agents` folder):
+> This task drives a **grounded agent**. The quickest way to get one is to create it in code —
+> from the `Labfiles/A-build-and-extend-ai-agents` folder, run:
 >
 > ```
 > python setup/bootstrap_agent.py
 > ```
 >
 > That creates and grounds `tailwind-agent` — including the **Code Interpreter** tool with the
-> sales data already attached — and writes `AGENT_NAME` into your `.env`. If you used it, you can
-> skip the portal "Set up" step below that adds Code Interpreter. Then verify you're ready:
+> sales data already attached — and writes `AGENT_NAME` into your `.env`. Then verify you're ready:
 >
 > ```
 > python setup/check_env.py --task 3
 > ```
+>
+> > **Already built the agent in [Task 1](A1-create-and-ground-an-agent.md)?** Use it instead
+> > of the script: open your `tailwind-agent` in the portal, add the **Code interpreter** tool
+> > with the sales data (step 1 below), and set `AGENT_NAME=tailwind-agent` in `.env`.
 
 ---
 
@@ -44,6 +47,12 @@ not the interface.
 
 **Set up:**
 
+If you ran `python setup/bootstrap_agent.py` above, your agent, its **Code Interpreter** tool,
+and `AGENT_NAME` are already configured — activate your virtual environment
+(`.\labenv\Scripts\Activate.ps1`) and skip to **Try it first**.
+
+**If you built the agent yourself in Task 1**, finish wiring it up:
+
 1. In the portal, open your `tailwind-agent`, add a **Code interpreter** tool, and upload
     a data file so there's something to analyze. Download and attach:
 
@@ -53,10 +62,9 @@ not the interface.
 
     Save the agent.
 
-1. Use the same `Labfiles/A-build-and-extend-ai-agents/Python` folder and virtual environment
-    you set up in [Getting started](A0-getting-started.md) (if you closed the terminal, reactivate with
-    `.\labenv\Scripts\Activate.ps1`). Then open **.env** and add `AGENT_NAME=tailwind-agent`
-    alongside the `PROJECT_ENDPOINT` you already set. Save the file.
+1. In the `Labfiles/A-build-and-extend-ai-agents/Python` folder, activate the virtual
+    environment (`.\labenv\Scripts\Activate.ps1`). Then open **.env** and add
+    `AGENT_NAME=tailwind-agent` alongside the `PROJECT_ENDPOINT` you already set. Save the file.
 
 > **Try it first**: The `agent_with_functions.py` file already contains a complete client
 > that launches a web chat window. Before running it, predict: which SDK call loads your

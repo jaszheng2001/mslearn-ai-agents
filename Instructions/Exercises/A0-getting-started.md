@@ -9,9 +9,9 @@ lab:
 
 # Getting started
 
-This page sets up everything the **Build and extend AI agents** lab needs. Complete it
-**once**, then do any task — [Task 1](A1-create-and-ground-an-agent.md) through
-[Task 5](A5-capstone-build-your-own-mcp-server.md) — on its own or in order.
+This page sets up everything the **Build and extend AI agents** lab needs. **Every task begins
+here** — complete this page first. Each task is written so you can then do it on its own; if
+you're working through the whole lab in one sitting, you only need to do this setup once.
 
 **Your scenario:** you work at **Tailwind Traders**, an outdoor-gear retailer that
 also runs guided trips. Across the lab you'll build the staff assistant that powers the

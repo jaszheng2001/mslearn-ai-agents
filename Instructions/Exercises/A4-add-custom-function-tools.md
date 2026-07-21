@@ -12,15 +12,18 @@ lab:
 
 *Part of the **Build and extend AI agents** lab. New here? Start with [Getting started](A0-getting-started.md).*
 
-> **Starting here on its own?** First complete [Getting started](A0-getting-started.md) to
-> create your Foundry project, clone the starter code, and set up your `.env`.
->
-> **This task needs** `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `Python/.env`. The helper
-> file `functions.py` is already in the starter folder. Verify you're ready:
+> **Set up (start here):** This task needs a Foundry project and the starter code. If you
+> haven't already, complete [Getting started](A0-getting-started.md) to create your project,
+> clone the code, and set `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `Python/.env`. The
+> helper file `functions.py` is already in the starter folder. Then verify you're ready:
 >
 > ```
 > python setup/check_env.py --task 4
 > ```
+>
+> > **Continuing from a previous task?** If you just finished an earlier task in the same
+> > `Python` folder, your project, virtual environment, and `.env` are already set — go
+> > straight to reviewing **functions.py** in **Set up** below.
 
 ---
 
@@ -32,10 +35,10 @@ call and with *what* arguments; your code executes it and returns the result.
 
 **Set up:**
 
-1. Use the same `Labfiles/A-build-and-extend-ai-agents/Python` folder and virtual environment
-    you set up in [Getting started](A0-getting-started.md) (reactivate with `.\labenv\Scripts\Activate.ps1` if needed); your
-    `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in **.env** are already set. Review
-    **functions.py**, which contains the trip planner's helper functions.
+1. In the `Labfiles/A-build-and-extend-ai-agents/Python` folder, activate the virtual
+    environment (`.\labenv\Scripts\Activate.ps1`) and confirm `PROJECT_ENDPOINT` and
+    `MODEL_DEPLOYMENT_NAME` are set in **.env** (see [Getting started](A0-getting-started.md)).
+    Then review **functions.py**, which contains the trip planner's helper functions.
 
 > **Try it first**: Look at `next_available_trip(region)` in **functions.py**. How would
 > you describe its single `region` parameter to the model so it knows when and how to

@@ -65,4 +65,4 @@ def run_chat_app(
         for trigger in (textbox.submit, send.click):
             trigger(handle, [textbox, chatbot], [chatbot, textbox])
 
-    demo.launch(server_port=server_port, inbrowser=True, theme=gr.themes.Soft())
+    demo.launch(server_port=server_port, inbrowser=True, css="footer {visibility: hidden}", theme=gr.themes.Soft())

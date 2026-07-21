@@ -89,15 +89,17 @@ The **Optional** tasks let you additionally:
 
 ## How this lab is organized
 
-This lab is **modular**. Every task shares one starter folder, one virtual environment, and
-one `.env`, so you can work through it end to end **or complete any single task on its own**.
+This lab is **modular**. Each task is written to be completed **on its own, starting fresh** —
+so you can pick a single task and do just that one. Every task also shares one starter folder,
+one virtual environment, and one `.env`, so if you'd rather work straight through, you can.
 
 1. **Start with [Getting started](A0-getting-started.md)** — create your Microsoft Foundry
    project (in the portal or with one `azd up` command), get the starter code, and set up
-   your `.env`. You only do this once.
-2. **Do any task below.** Each task page opens with a *"Starting here on its own?"* callout
-   that tells you exactly what it needs and how to fast-forward past earlier tasks (for
-   example, a script that creates the grounded agent for you), so you can jump straight in.
+   your `.env`. Every task begins from here; if you're doing the whole lab in one sitting, you
+   only need to do this once.
+2. **Do any task.** Each task lists the setup it needs so you can start it independently. If
+   you're moving straight from the previous task, a short *"Continuing from a previous task?"*
+   note at the top lets you skip the repeated setup and keep going.
 
 ## Lab at a glance
 
