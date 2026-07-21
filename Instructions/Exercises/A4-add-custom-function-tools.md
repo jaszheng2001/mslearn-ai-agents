@@ -16,14 +16,14 @@ lab:
 > haven't already, complete [Getting started](A0-getting-started.md) to create your project,
 > clone the code, and set `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `Python/.env`. The
 > helper file `functions.py` is already in the starter folder. Then verify you're ready:
->
-> ```
-> python setup/check_env.py --task 4
-> ```
->
-> > **Continuing from a previous task?** If you just finished an earlier task in the same
-> > `Python` folder, your project, virtual environment, and `.env` are already set — go
-> > straight to reviewing **functions.py** in **Set up** below.
+
+```
+python setup/check_env.py --task 4
+```
+
+> **Continuing from a previous task?** If you just finished an earlier task in the same
+> `Python` folder, your project, virtual environment, and `.env` are already set — go
+> straight to reviewing **functions.py** in **Set up** below.
 
 ---
 

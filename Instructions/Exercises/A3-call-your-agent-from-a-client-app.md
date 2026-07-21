@@ -15,24 +15,24 @@ lab:
 > **Set up (start here):** This task needs a Foundry project and the starter code. If you
 > haven't already, complete [Getting started](A0-getting-started.md) to create your project,
 > clone the code, and set `PROJECT_ENDPOINT` in `Python/.env`.
->
-> This task drives a **grounded agent**. The quickest way to get one is to create it in code —
-> from the `Labfiles/A-build-and-extend-ai-agents` folder, run:
->
-> ```
-> python setup/bootstrap_agent.py
-> ```
->
-> That creates and grounds `tailwind-agent` — including the **Code Interpreter** tool with the
-> sales data already attached — and writes `AGENT_NAME` into your `.env`. Then verify you're ready:
->
-> ```
-> python setup/check_env.py --task 3
-> ```
->
-> > **Already built the agent in [Task 1](A1-create-and-ground-an-agent.md)?** Use it instead
-> > of the script: open your `tailwind-agent` in the portal, add the **Code interpreter** tool
-> > with the sales data (step 1 below), and set `AGENT_NAME=tailwind-agent` in `.env`.
+
+This task drives a **grounded agent**. The quickest way to get one is to create it in code —
+from the `Labfiles/A-build-and-extend-ai-agents` folder, run:
+
+```
+python setup/bootstrap_agent.py
+```
+
+That creates and grounds `tailwind-agent` — including the **Code Interpreter** tool with the
+sales data already attached — and writes `AGENT_NAME` into your `.env`. Then verify you're ready:
+
+```
+python setup/check_env.py --task 3
+```
+
+> **Already built the agent in [Task 1](A1-create-and-ground-an-agent.md)?** Use it instead
+> of the script: open your `tailwind-agent` in the portal, add the **Code interpreter** tool
+> with the sales data (step 1 below), and set `AGENT_NAME=tailwind-agent` in `.env`.
 
 ---
 

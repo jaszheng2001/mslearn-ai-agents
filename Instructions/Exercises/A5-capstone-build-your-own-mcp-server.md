@@ -17,14 +17,14 @@ lab:
 > create your project, clone the code, and set `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME`
 > in `Python/.env`. It reuses `functions.py` from [Task 4](A4-add-custom-function-tools.md) —
 > already in the starter folder, so you don't need to have finished Task 4. Then verify:
->
-> ```
-> python setup/check_env.py --task 5
-> ```
->
-> > **Continuing from a previous task?** If you just finished an earlier task in the same
-> > `Python` folder, your project, virtual environment, and `.env` are already set — go
-> > straight to **Set up** below to start editing `server.py` and `client.py`.
+
+```
+python setup/check_env.py --task 5
+```
+
+> **Continuing from a previous task?** If you just finished an earlier task in the same
+> `Python` folder, your project, virtual environment, and `.env` are already set — go
+> straight to **Set up** below to start editing `server.py` and `client.py`.
 
 ---
 

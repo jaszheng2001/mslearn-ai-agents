@@ -16,14 +16,14 @@ lab:
 > haven't already, complete [Getting started](A0-getting-started.md) to create your project,
 > clone the code, and set `PROJECT_ENDPOINT` and `MODEL_DEPLOYMENT_NAME` in `Python/.env`.
 > Then, from the `Labfiles/A-build-and-extend-ai-agents` folder, verify you're ready:
->
-> ```
-> python setup/check_env.py --task 2
-> ```
->
-> > **Continuing from a previous task?** If you just finished an earlier task in the same
-> > `Python` folder, your project, virtual environment, and `.env` are already set — go
-> > straight to **Connect the agent to the MCP server** below.
+
+```
+python setup/check_env.py --task 2
+```
+
+> **Continuing from a previous task?** If you just finished an earlier task in the same
+> `Python` folder, your project, virtual environment, and `.env` are already set — go
+> straight to **Connect the agent to the MCP server** below.
 
 ---
 
